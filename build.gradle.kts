@@ -12,7 +12,7 @@ group = "com.sir4ur0n"
 version = "1.0-SNAPSHOT"
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -31,8 +31,10 @@ dependencies {
     val junitQuickcheck = "0.8.1"
     testCompile("com.pholser", "junit-quickcheck-core", junitQuickcheck)
     testCompile("com.pholser", "junit-quickcheck-generators", junitQuickcheck)
+    testCompile("com.github.sir4ur0n", "junit-quickcheck-vavr", "1.0")
     // Avoid maintaining the explicit resource file with all Quickcheck generators
     testCompile("com.google.auto.service", "auto-service", "1.0-rc4")
+    testAnnotationProcessor("com.google.auto.service", "auto-service", "1.0-rc4")
 }
 
 configure<JavaPluginConvention> {
