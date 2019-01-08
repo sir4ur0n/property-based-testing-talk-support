@@ -9,13 +9,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class WeirdSorterTest {
+public class IdempotenceTest {
 
-  private WeirdSorter cut;
+  private Idempotence cut;
 
   @Before
   public void setUp() {
-    cut = new WeirdSorter();
+    cut = new Idempotence();
   }
 
   @Property

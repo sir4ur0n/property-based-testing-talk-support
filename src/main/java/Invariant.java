@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 
-class NewYearEve {
+class Invariant {
 
   boolean isNewYearEve(LocalDate date) {
     //

@@ -3,7 +3,7 @@ import static io.vavr.API.List;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
 
-class WeirdSorter {
+class Idempotence {
 
   List<Integer> sortByEvenThenValue(List<Integer> input) {
     Map<Boolean, List<Integer>> evenOrNot = input.groupBy(i -> i % 2 == 0)

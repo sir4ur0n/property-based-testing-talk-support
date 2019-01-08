@@ -7,13 +7,13 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class FizzBuzzProp {
+public class AnalogousProp {
 
-  private FizzBuzz cut;
+  private Analogous cut;
 
   @Before
   public void setUp() {
-    cut = new FizzBuzz();
+    cut = new Analogous();
   }
 
   @Property

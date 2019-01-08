@@ -10,13 +10,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class TaxesTest {
+public class InverseTest {
 
-  private Taxes cut;
+  private Inverse cut;
 
   @Before
   public void setUp() {
-    cut = new Taxes();
+    cut = new Inverse();
   }
 
   @Property

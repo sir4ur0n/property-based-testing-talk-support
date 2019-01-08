@@ -4,7 +4,7 @@ import static java.math.RoundingMode.UNNECESSARY;
 
 import java.math.BigDecimal;
 
-class Taxes {
+class Inverse {
 
   private static final BigDecimal VAT = BigDecimal.valueOf(1.2);
 

@@ -7,13 +7,13 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class WeirdSorterProp {
+public class IdempotenceProp {
 
-  private WeirdSorter cut;
+  private Idempotence cut;
 
   @Before
   public void setUp() {
-    cut = new WeirdSorter();
+    cut = new Idempotence();
   }
 
   @Property

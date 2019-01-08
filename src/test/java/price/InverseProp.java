@@ -8,13 +8,13 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class TaxesProp {
+public class InverseProp {
 
-  private Taxes cut;
+  private Inverse cut;
 
   @Before
   public void setUp() {
-    cut = new Taxes();
+    cut = new Inverse();
   }
 
   @Property

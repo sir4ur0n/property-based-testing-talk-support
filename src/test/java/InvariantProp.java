@@ -8,13 +8,13 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class NewYearEveProp {
+public class InvariantProp {
 
-  private NewYearEve cut;
+  private Invariant cut;
 
   @Before
   public void setUp() {
-    cut = new NewYearEve();
+    cut = new Invariant();
   }
 
   @Property

@@ -1,4 +1,4 @@
-public class FizzBuzz {
+public class Analogous {
 
   String fizzBuzz(int i) {
     String result = "";

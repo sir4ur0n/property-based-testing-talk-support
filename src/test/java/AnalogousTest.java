@@ -8,13 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(JUnitQuickcheck.class)
-public class FizzBuzzTest {
+public class AnalogousTest {
 
-  private FizzBuzz cut;
+  private Analogous cut;
 
   @Before
   public void setUp() {
-    cut = new FizzBuzz();
+    cut = new Analogous();
   }
 
   @Property
