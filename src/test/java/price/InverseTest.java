@@ -2,7 +2,6 @@ package price;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import java.math.BigDecimal;
 import org.junit.Before;
@@ -17,14 +16,6 @@ public class InverseTest {
   @Before
   public void setUp() {
     cut = new Inverse();
-  }
-
-  @Property
-  public void inverse(Price anyPrice) {
-    Price withTaxes = cut.addTaxes(anyPrice);
-    Price actual = cut.removeTaxes(withTaxes);
-
-    assertThat(actual).isEqualTo(anyPrice);
   }
 
   @Test

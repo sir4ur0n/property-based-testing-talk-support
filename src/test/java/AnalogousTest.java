@@ -1,7 +1,5 @@
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assumptions.assumeThat;
 
-import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,20 +13,6 @@ public class AnalogousTest {
   @Before
   public void setUp() {
     cut = new Analogous();
-  }
-
-  @Property
-  public void fizz_plus3(int anyInt) {
-    assumeThat(cut.fizzBuzz(anyInt)).contains("fizz");
-
-    assertThat(cut.fizzBuzz(anyInt + 3)).contains("fizz");
-  }
-
-  @Property
-  public void buzz_plus5(int anyInt) {
-    assumeThat(cut.fizzBuzz(anyInt)).contains("buzz");
-
-    assertThat(cut.fizzBuzz(anyInt + 5)).contains("buzz");
   }
 
   @Test
