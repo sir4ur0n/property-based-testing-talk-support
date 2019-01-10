@@ -1,7 +1,6 @@
-package price;
-
 import static java.math.RoundingMode.UNNECESSARY;
 
+import inverse.Price;
 import java.math.BigDecimal;
 
 class Inverse {

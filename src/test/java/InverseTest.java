@@ -1,8 +1,7 @@
-package price;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import inverse.Price;
 import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;

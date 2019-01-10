@@ -1,4 +1,4 @@
-package price;
+package inverse;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -17,7 +17,7 @@ public class Price {
   BigDecimal value;
   PriceType type;
 
-  Price withMappedValue(Function<BigDecimal, BigDecimal> mapper) {
+  public Price withMappedValue(Function<BigDecimal, BigDecimal> mapper) {
     return withValue(mapper.apply(value));
   }
 
