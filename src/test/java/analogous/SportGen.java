@@ -1,4 +1,4 @@
-package price;
+package analogous;
 
 import com.google.auto.service.AutoService;
 import com.pholser.junit.quickcheck.generator.GenerationStatus;
@@ -6,14 +6,14 @@ import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
 @AutoService(Generator.class)
-public class PriceGen extends Generator<Price> {
+public class SportGen extends Generator<Sport> {
 
-  public PriceGen() {
-    super(Price.class);
+  public SportGen() {
+    super(Sport.class);
   }
 
   @Override
-  public Price generate(SourceOfRandomness random, GenerationStatus status) {
-    return gen().fieldsOf(Price.class).generate(random, status);
+  public Sport generate(SourceOfRandomness random, GenerationStatus status) {
+    return gen().fieldsOf(Sport.class).generate(random, status);
   }
 }

@@ -1,19 +1,42 @@
+import static java.util.Collections.emptyList;
+
+import analogous.Sport;
+import analogous.User;
+import io.vavr.collection.List;
+import io.vavr.control.Option;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 public class Analogous {
 
-  String fizzBuzz(int i) {
-    String result = "";
-    boolean isFizz = i % 3 == 0;
-    boolean isBuzz = i % 5 == 0;
-    if (isFizz || isBuzz) {
-      if (isFizz) {
-        result += "fizz";
-      }
-      if (isBuzz) {
-        result += "buzz";
-      }
-      return result;
+  List<Sport> friendsSportsOrderByName_vavr(Option<User> user) {
+    return user.toList()
+        .flatMap(User::getFriends)
+        .flatMap(User::getSports)
+        .distinct()
+        .sortBy(Sport::getName);
+  }
+
+  java.util.List<Sport> friendsSportsOrderByName_legacy(User user) {
+    if (user == null) {
+      return emptyList();
     }
-    return String.valueOf(i);
+
+    SortedSet<Sport> result = new TreeSet<>(new Comparator<Sport>() {
+      @Override
+      public int compare(Sport o1, Sport o2) {
+        return o1.getName().compareTo(o2.getName());
+      }
+    });
+
+    java.util.List<User> friends = user.getFriends().toJavaList();
+    for (User friend : friends) {
+      result.addAll(friend.getSports().toJavaList());
+    }
+
+    return new ArrayList<>(result);
   }
 
 }
