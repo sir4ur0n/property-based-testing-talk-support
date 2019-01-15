@@ -37,4 +37,25 @@ public class InverseTest {
 
     assertThat(actual.getValue()).isEqualByComparingTo(BigDecimal.valueOf(120.0));
   }
+
+  @Test
+  public void _1dot20_1() {
+    Price actual = cut.removeTaxes(new Price().withValue(BigDecimal.valueOf(1.2)));
+
+    assertThat(actual.getValue()).isEqualByComparingTo(BigDecimal.valueOf(1.0));
+  }
+
+  @Test
+  public void _27dot6_23() {
+    Price actual = cut.removeTaxes(new Price().withValue(BigDecimal.valueOf(27.6)));
+
+    assertThat(actual.getValue()).isEqualByComparingTo(BigDecimal.valueOf(23.0));
+  }
+
+  @Test
+  public void _120_100() {
+    Price actual = cut.removeTaxes(new Price().withValue(BigDecimal.valueOf(120.0)));
+
+    assertThat(actual.getValue()).isEqualByComparingTo(BigDecimal.valueOf(100.0));
+  }
 }
