@@ -1,7 +1,9 @@
 import static io.vavr.API.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
+import io.vavr.collection.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +16,15 @@ public class IdempotenceTest {
   @Before
   public void setUp() {
     cut = new Idempotence();
+  }
+
+  @Property
+  public void idempotence(List<Integer> anyIntegers) {
+    System.out.println(anyIntegers);
+    List<Integer> ranOnce = cut.sortByEvenThenValue(anyIntegers);
+    List<Integer> ranTwice = cut.sortByEvenThenValue(ranOnce);
+
+    assertThat(ranTwice).isEqualTo(ranOnce);
   }
 
   @Test

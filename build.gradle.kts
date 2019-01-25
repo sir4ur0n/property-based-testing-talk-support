@@ -1,6 +1,6 @@
 plugins {
-    id("io.franzbecker.gradle-lombok") version ("1.14")
     java
+    id("io.franzbecker.gradle-lombok") version ("1.14")
 }
 
 lombok {
@@ -20,6 +20,7 @@ dependencies {
     implementation("io.vavr", "vavr", "0.9.2")
     // Stop spamming when I run my tests, SLF4J, please, pretty please
     implementation("org.slf4j", "slf4j-nop", "1.7.25")
+
     // JUnit 5
     val junitJupiterVersion = "5.3.2"
     testImplementation("org.junit.jupiter", "junit-jupiter-api", junitJupiterVersion)
@@ -35,10 +36,13 @@ dependencies {
     testImplementation("com.pholser", "junit-quickcheck-generators", junitQuickcheck)
     testImplementation("com.github.sir4ur0n", "junit-quickcheck-vavr", "1.0")
     // Avoid maintaining the explicit resource file with all Quickcheck generators
-    testImplementation("com.google.auto.service", "auto-service", "1.0-rc4")
-    testAnnotationProcessor("com.google.auto.service", "auto-service", "1.0-rc4")
+    val autoServiceVersion = "1.0-rc4"
+    testImplementation("com.google.auto.service", "auto-service", autoServiceVersion)
+
+    testAnnotationProcessor("com.google.auto.service", "auto-service", autoServiceVersion)
 }
 
 configure<JavaPluginConvention> {
-    sourceCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }

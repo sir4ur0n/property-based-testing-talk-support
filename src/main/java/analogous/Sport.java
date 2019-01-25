@@ -13,5 +13,4 @@ public class Sport {
 
   String name;
   String description;
-
 }
