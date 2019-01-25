@@ -1,0 +1,5 @@
+= Introduction
+Live coding support of my `Property tests: Write fewer tests, find more bugs` talk.
+
+* Each class' name is the type of property we can find on such code. Of course this is not exhaustive.
+* The test files contain both classical unit tests (annotated with `@Test`) as well as property tests (annotated with `@Property`).
