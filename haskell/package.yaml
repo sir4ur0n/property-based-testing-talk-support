@@ -1,0 +1,81 @@
+name:                haskell
+version:             0.1.0.0
+github:              "Sir4ur0n/haskell"
+license:             BSD3
+author:              "Julien Debon"
+maintainer:          "debon.julien@gmail.com"
+copyright:           "WTFPL"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+description:         Please see the README on GitHub at <https://github.com/Sir4ur0n/haskell#readme>
+
+ghc-options:
+  - -Wall
+  - -Wcompat
+  # Some additional compiler warnings from https://medium.com/mercury-bank/enable-all-the-warnings-a0517bc081c3
+  - -Wincomplete-uni-patterns
+  - -Wincomplete-record-updates
+  - -Wmissing-home-modules
+  - -Widentities
+  - -Wredundant-constraints
+  # Don't optimize by default (faster build time)
+  - -O0
+
+dependencies:
+  - base >= 4.7 && < 5
+  - hlint
+  - scientific
+  - time
+  - text
+
+library:
+  source-dirs: src
+
+executables:
+  haskell-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - haskell
+
+tests:
+  haskell-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+      - -Wall
+      - -Wcompat
+      - -Wmissing-home-modules
+      - -Widentities
+      - -Wredundant-constraints
+      # Our test convention for HUnit would make it unnecessarily verbose to add the signature of each test
+      - -fno-warn-missing-signatures
+      # Delegate to Tasty to discover tests
+      - -fno-warn-missing-export-lists
+      # Use orphan instances in tests to add Arbitrary (QuickCheck) behaviour without impacting the Production type
+      - -fno-warn-orphans
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+      - -Wno-unused-imports
+      - -O0
+    dependencies:
+      - haskell
+      # Property based testing
+      - QuickCheck
+      - quickcheck-instances
+      - quickcheck-arbitrary-adt
+      # Unit testing
+      - HUnit
+      # Test aggregation and discovery
+      - tasty
+      - tasty-quickcheck
+      - tasty-hunit
+      - tasty-discover
