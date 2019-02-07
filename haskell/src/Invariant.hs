@@ -1,6 +1,11 @@
-module Invariant (LocalDate, isNewYearEve) where
+module Invariant
+  ( Day
+  , isNewYearEve
+  ) where
 
-type LocalDate = (Integer, Int, Int)
+import           Data.Time (Day, toGregorian)
 
-isNewYearEve :: LocalDate -> Bool
-isNewYearEve (_, month, day) = month == 12 && day == 31
+isNewYearEve :: Day -> Bool
+isNewYearEve date = month == 12 && day == 31
+  where
+    (_, month, day) = toGregorian date
