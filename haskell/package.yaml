@@ -70,6 +70,7 @@ dependencies:
   - scientific
   - time
   - text
+  - lens
 
 library:
   source-dirs: src
@@ -88,6 +89,7 @@ tests:
       - -fno-warn-missing-signatures
       # Delegate to Tasty to discover tests
       - -fno-warn-missing-export-lists
+      - -fno-warn-missing-import-lists
       # Use orphan instances in tests to add Arbitrary (QuickCheck) behaviour without impacting the Production type
       - -fno-warn-orphans
       - -threaded
