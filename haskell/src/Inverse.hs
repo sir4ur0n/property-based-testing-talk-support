@@ -4,7 +4,7 @@ import           Data.Scientific (Scientific)
 import           GHC.Generics    (Generic)
 
 data Price = Price
-  { _value :: Scientific
+  { _value :: PriceValue
   , _type  :: PriceType
   } deriving (Show, Eq, Generic)
 
@@ -16,6 +16,8 @@ data PriceType
 type PriceWithoutTaxes = Price
 
 type PriceWithTaxes = Price
+
+type PriceValue = Scientific
 
 tva :: Scientific
 tva = 1.2
