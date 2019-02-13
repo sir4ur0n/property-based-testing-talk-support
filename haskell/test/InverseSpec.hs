@@ -1,5 +1,6 @@
 module InverseSpec where
 
+import           Data.Scientific                      (Scientific, scientific)
 import           Inverse
 import qualified Inverse                              as SUT
 import           Test.QuickCheck
@@ -33,4 +34,4 @@ instance Arbitrary PriceType where
   arbitrary = genericArbitrary
 
 instance Arbitrary PriceValue where
-  arbitrary = genericArbitrary
+  arbitrary = PriceValue <$> (scientific <$> choose (1, 10000) <*> choose (-2, 0))
