@@ -31,3 +31,6 @@ instance Arbitrary Price where
 
 instance Arbitrary PriceType where
   arbitrary = genericArbitrary
+
+instance Arbitrary PriceValue where
+  arbitrary = genericArbitrary

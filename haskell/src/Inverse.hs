@@ -17,10 +17,12 @@ type PriceWithoutTaxes = Price
 
 type PriceWithTaxes = Price
 
-type PriceValue = Scientific
+newtype PriceValue = PriceValue
+  { _scientificValue :: Scientific
+  } deriving (Show, Eq, Generic, Num, Fractional)
 
-tva :: Scientific
-tva = 1.2
+tva :: PriceValue
+tva = PriceValue 1.2
 
 addTaxes :: PriceWithoutTaxes -> PriceWithTaxes
 addTaxes price = price {_value = _value price * tva}
