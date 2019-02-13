@@ -23,5 +23,5 @@ tva = 1.2
 addTaxes :: PriceWithoutTaxes -> PriceWithTaxes
 addTaxes price = price {_value = _value price * tva}
 
-removeTaxes :: PriceWithoutTaxes -> PriceWithTaxes
+removeTaxes :: PriceWithTaxes -> PriceWithoutTaxes
 removeTaxes price = price {_value = _value price / tva}
