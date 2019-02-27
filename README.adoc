@@ -1,10 +1,5 @@
 = Introduction
 
-* Each class' name is the type of property we can find on such code. Of course this is not exhaustive.
-* The test files contain both classical unit tests (annotated with `@Test`) as well as property tests (annotated with `@Property`).
+Each class/module name is the type of property tested. Of course this is not exhaustive.
 
-== Build
-```
-./gradlew build
-```
-Runs all tests.
+Examples are provided in Java and Haskell. Most examples are the same in both languages, except "analogous": Vavr doesn't (need to) exist in Haskell, Lenses are a PITA to use in Java. The idea of refactoring remains though.
