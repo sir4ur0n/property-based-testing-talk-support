@@ -2,10 +2,10 @@ import static java.util.Collections.emptyList;
 
 import analogous.Sport;
 import analogous.User;
-import io.vavr.collection.List;
 import io.vavr.control.Option;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -17,10 +17,11 @@ class Analogous {
         .flatMap(User::getFriends)
         .flatMap(User::getSports)
         .distinct()
-        .sortBy(Sport::getName);
+        .sortBy(Sport::getName)
+        .toJavaList();
   }
 
-  java.util.List<Sport> friendsSportsOrderByName_legacy(User user) {
+  List<Sport> friendsSportsOrderByName_legacy(User user) {
     if (user == null) {
       return emptyList();
     }
@@ -32,7 +33,7 @@ class Analogous {
       }
     });
 
-    java.util.List<User> friends = user.getFriends().toJavaList();
+    List<User> friends = user.getFriends().toJavaList();
     for (User friend : friends) {
       result.addAll(friend.getSports().toJavaList());
     }
