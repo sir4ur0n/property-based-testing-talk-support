@@ -9,7 +9,8 @@ import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class Analogous {
+@SuppressWarnings("ALL")
+class Analogous {
 
   List<Sport> friendsSportsOrderByName_vavr(Option<User> user) {
     return user.toList()
