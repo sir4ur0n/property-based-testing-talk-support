@@ -1,5 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assumptions.assumeThat;
 
+import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import java.time.LocalDate;
 import org.junit.Before;
@@ -14,6 +16,18 @@ public class InvariantTest {
   @Before
   public void setUp() {
     cut = new Invariant();
+  }
+
+  @Property
+  public void invariant_31_12(short anyYear) {
+    assertThat(cut.isNewYearEve(LocalDate.of(anyYear, 12, 31))).isTrue();
+  }
+
+  @Property(trials = 1000)
+  public void invariant_not_31_12(LocalDate anyDate) {
+    assumeThat(anyDate.getMonthValue() != 12 || anyDate.getDayOfMonth() != 31).isTrue();
+
+    assertThat(cut.isNewYearEve(anyDate)).isFalse();
   }
 
   @Test
