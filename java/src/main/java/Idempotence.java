@@ -1,16 +1,11 @@
-import static io.vavr.API.List;
-
 import io.vavr.collection.List;
-import io.vavr.collection.Map;
 
 class Idempotence {
 
-  List<Integer> sortByEvenThenValue(List<Integer> input) {
-    Map<Boolean, List<Integer>> evenOrNot = input.groupBy(i -> i % 2 == 0)
-        .mapValues(List::sorted);
-    List<Integer> evenSorted = evenOrNot.get(true).getOrElse(List());
-    List<Integer> oddSorted = evenOrNot.get(false).getOrElse(List());
-    return evenSorted.appendAll(oddSorted);
+  List<String> removeSmallWords(List<String> input) {
+    return input
+        .map(String::trim)
+        .filter(s -> s.length() >= 3);
   }
 
 }

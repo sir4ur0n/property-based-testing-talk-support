@@ -19,32 +19,30 @@ public class IdempotenceTest {
   }
 
   @Property
-  public void idempotence(List<Integer> anyIntegers) {
-    System.out.println(anyIntegers);
-    List<Integer> ranOnce = cut.sortByEvenThenValue(anyIntegers);
-    List<Integer> ranTwice = cut.sortByEvenThenValue(ranOnce);
+  public void idempotence(List<String> anyStrings) {
+    List<String> result1 = cut.removeSmallWords(anyStrings);
+    List<String> result2 = cut.removeSmallWords(result1);
 
-    assertThat(ranTwice).isEqualTo(ranOnce);
+    assertThat(result1).isEqualTo(result2);
   }
 
   @Test
   public void empty_empty() {
-    assertThat(cut.sortByEvenThenValue(List())).isEqualTo(List());
+    assertThat(cut.removeSmallWords(List())).isEqualTo(List());
   }
 
   @Test
-  public void one_one() {
-    assertThat(cut.sortByEvenThenValue(List(1))).isEqualTo(List(1));
+  public void keep_long_enough() {
+    assertThat(cut.removeSmallWords(List("a", "bc", "def", "ghij"))).isEqualTo(List("def", "ghij"));
   }
 
   @Test
-  public void many_ordered() {
-    assertThat(cut.sortByEvenThenValue(List(1, 2, 3, 4, 5, 6))).isEqualTo(List(2, 4, 6, 1, 3, 5));
+  public void remove_all_small() {
+    assertThat(cut.removeSmallWords(List("    a", "b", "c            ", " de "))).isEqualTo(List());
   }
 
   @Test
   public void many_random() {
-    assertThat(cut.sortByEvenThenValue(List(43, 16, 22, 99, 68, 9865, 4567)))
-        .isEqualTo(List(16, 22, 68, 43, 99, 4567, 9865));
+    assertThat(cut.removeSmallWords(List("hello", "", "wo  rld  ", "    !!"))).isEqualTo(List("hello", "wo  rld"));
   }
 }
