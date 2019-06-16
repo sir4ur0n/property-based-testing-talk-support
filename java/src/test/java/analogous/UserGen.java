@@ -24,6 +24,9 @@ public class UserGen extends Generator<User> {
         .withFriends(buildFriends(random, status));
   }
 
+  /**
+   * Because of the recursive type of `User`, we customize the creation of its friends.
+   */
   private List<Sport> generateSports(SourceOfRandomness random, GenerationStatus status) {
     return (List<Sport>) gen().make(VavrListGenerator.class, gen().type(Sport.class)).generate(random, status);
   }
