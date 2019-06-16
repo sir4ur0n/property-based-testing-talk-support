@@ -10,6 +10,13 @@ import           Test.Tasty
 import           Test.Tasty.HUnit
 import           Test.Tasty.QuickCheck
 
+{-|
+  This is an inverse property test: we check that from any input transformed by a function `f`, `f` is reversible if it's possible from its output to get back to the original input.
+
+  This is useful because a reversible function means it doesn't lose any information during the transformation. If it did, it would be impossible to get back to the original input. This is particularly useful for conversion functions (e.g. from your public REST models to your business models).
+
+  Here, this helps proving there is no loss of precision due to tax processing.
+-}
 test_inverse_add_remove =
   testProperty "Adding and removing taxes are inverse" $ \price -> (removeTaxes . addTaxes) price == price
 
@@ -33,5 +40,8 @@ instance Arbitrary Price where
 instance Arbitrary PriceType where
   arbitrary = genericArbitrary
 
+{-|
+  This is an example of generator. We arbitrarily decide that no price will be lower than a tenth of cent, and no price will be greater than 100 000.
+-}
 instance Arbitrary PriceValue where
-  arbitrary = PriceValue <$> (scientific <$> choose (1, 10000) <*> choose (-2, 0))
+  arbitrary = PriceValue <$> (scientific <$> choose (1, 100000) <*> choose (-2, 0))

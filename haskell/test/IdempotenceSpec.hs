@@ -5,6 +5,11 @@ import           Test.Tasty
 import           Test.Tasty.HUnit
 import           Test.Tasty.QuickCheck
 
+{-|
+  This is an idempotence property. Idempotence means the function has no effect if run a second time on its output (i.e. `f is idempotent if f(x) == f(f(x))`).
+
+  This property is useful for "cleaning" functions (e.g. cleaning user inputs from a form before passing it to business logic). Once an input is cleaned, cleaning it again should have no effect.
+-}
 test_idempotence =
   testProperty "Weird sorter is idempotent" $ \integers ->
     SUT.sortByEvenThenValue integers == (SUT.sortByEvenThenValue . SUT.sortByEvenThenValue) integers
