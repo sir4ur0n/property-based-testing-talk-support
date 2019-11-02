@@ -1,15 +1,13 @@
 ﻿namespace Samples.Tests
 {
-    using System.Collections.Generic;
-
     using FsCheck.Xunit;
-
+    using System.Collections.Generic;
     using Xunit;
 
     public class IdempotenceTests
     {
         [Fact]
-        public void empty_empty()
+        public void EmptyEmpty()
         {
             Assert.Equal(new List<string>().RemoveSmallWords(), new List<string>());
         }
@@ -24,7 +22,7 @@
         }
 
         [Fact]
-        public void keep_long_enough()
+        public void KeepLongEnough()
         {
             Assert.Equal(
                 new List<string>
@@ -42,7 +40,7 @@
         }
 
         [Fact]
-        public void many_random()
+        public void ManyRandom()
         {
             Assert.Equal(
                 new List<string>
@@ -60,7 +58,7 @@
         }
 
         [Fact]
-        public void remove_all_small()
+        public void RemoveAllSmall()
         {
             Assert.Equal(
                 new List<string>(),

@@ -10,8 +10,13 @@
         {
             var result = new SortedSet<Sport>(new SportComparer());
             foreach (var userFriend in user.Friends)
-            foreach (var userFriendSport in userFriend.Sports)
-                result.Add(userFriendSport);
+            {
+                foreach (var userFriendSport in userFriend.Sports)
+                {
+                    result.Add(userFriendSport);
+                }
+            }
+
             return result;
         }
 

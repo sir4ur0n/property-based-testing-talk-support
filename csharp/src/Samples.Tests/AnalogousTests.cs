@@ -1,12 +1,9 @@
 ﻿namespace Samples.Tests
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using FsCheck;
     using FsCheck.Xunit;
-
-    using Xunit;
+    using System.Collections.Generic;
+    using System.Linq;
     using Xunit.Abstractions;
 
     public class AnalogousTests
@@ -19,10 +16,10 @@
         }
 
         [Property(Arbitrary = new[] { typeof(UserArbitrary) }, Verbose = true, MaxTest = 1000)]
-        public void Analogous(User anyUser)
+        public Property Analogous(User anyUser)
         {
             this.output.WriteLine(anyUser.ToString());
-            Assert.Equal(anyUser.GetFriendsSportsLegacy(), anyUser.GetFriendsSports());
+            return anyUser.GetFriendsSportsLegacy().SequenceEqual(anyUser.GetFriendsSports()).ToProperty();
         }
     }
 

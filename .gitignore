@@ -106,3 +106,5 @@ fabric.properties
 
 .idea/
 
+/.vs/property-based-testing-talk-support/v16/.suo
+/.vs/slnx.sqlite

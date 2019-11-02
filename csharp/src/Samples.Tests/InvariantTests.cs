@@ -1,10 +1,8 @@
-namespace Samples.Tests
+﻿namespace Samples.Tests
 {
-    using System;
-
     using FsCheck;
     using FsCheck.Xunit;
-
+    using System;
     using Xunit;
 
     public class InvariantTests

@@ -36,7 +36,6 @@
     public enum PriceTypes
     {
         Standard,
-
         Discount
     }
 }
